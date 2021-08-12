@@ -1,0 +1,12 @@
+.inventory__list {
+  display: flex;
+  align-items: flex-start;
+  align-content: flex-start;
+  flex-wrap: wrap;
+  flex-grow: 1;
+  min-height: 300px;
+  margin: 0;
+  padding: 0;
+  background-color: rgba(122, 61, 22, 0.884);
+  border: 10px solid rgb(32, 16, 3);
+}
