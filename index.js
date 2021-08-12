@@ -160,13 +160,13 @@ app.use('/api/online_user', routerOnlineUser);
 app.use('/api/connection', routerConnection);
 // app.use(express.static('client/public'));
 
-app.use(favicon(__dirname + '/build/favicon.png')); 
+app.use(favicon(__dirname + 'client/build/favicon.png')); 
 
 app.use(express.static(__dirname));
-app.use(express.static(path.join(__dirname, 'build')));
+app.use(express.static(path.join(__dirname, 'client/build')));
 
 app.get('/*', function (req, res) {
-  res.sendFile(path.join(__dirname, 'build', 'index.html'));
+  res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
   });
 
 async function start() {
