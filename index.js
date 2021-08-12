@@ -16,7 +16,7 @@ import favicon from 'express-favicon';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-const PORT = process.env.PORT || 4000;
+const PORT = 4000;
 
 const ROOMS = [
   {
@@ -178,7 +178,7 @@ async function start() {
       useCreateIndex: true
     })
 
-    httpServer.listen(process.env.PORT || 4000, () => {
+    httpServer.listen(process.env.PORT || 3000, () => {
       console.log(`server started on port ${PORT}`);
     })
   } catch (err) {
