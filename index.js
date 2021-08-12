@@ -155,7 +155,7 @@ app.use('/api/connection', routerConnection);
 app.use(express.static('client/public/img'));
 
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'public/index.html'))
+  res.sendFile(path.join(__dirname, 'client/public/index.html'))
 })
 
 async function start() {
