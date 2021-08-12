@@ -9,8 +9,13 @@ import routerConnection from './routes/connection.route.js';
 import config from './config/default.js';
 import { createServer } from "http";
 import { Server } from "socket.io";
+import path from 'path';
+import { fileURLToPath } from 'url';
 
-const PORT = config.port;
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+const PORT = process.env.PORT || 4000;
 
 const ROOMS = [
   {
@@ -66,7 +71,7 @@ const pushUserToRoom = (user, roomId) => {
 
 const deleteUserFromRoom = (user, roomId) => {
   const room = ROOMS.find((item) => item.room_id === roomId);
-  if(room && user) {
+  if (room && user) {
     room.online_users.forEach(function (el, i) {
       if (el.id == user.id) room.online_users.splice(i, 1)
     })
@@ -92,7 +97,7 @@ io.on("connection", (socket) => {
     if (socket.user) {
       deleteUserFromAllRooms(socket.user);
       io.emit('SEND_NEW_ROOMS', ROOMS)
-    };    
+    };
   });
 
   socket.on('ROOM:JOIN', ({ user, roomId }) => {
@@ -123,16 +128,16 @@ io.on("connection", (socket) => {
   })
 
   socket.on('SEND_MESSAGE', (msg) => {
-    if(msg) {
+    if (msg) {
       const room = ROOMS.find((item) => item.room_id === msg.roomId);
       room.messages.push(msg)
       io.emit('MESSAGE_CREATED', room.messages)
     }
   })
-  
+
   socket.on('GET_MESSAGES', (roomId) => {
     console.log('GET_MESSAGES');
-    if(roomId) {
+    if (roomId) {
       const room = ROOMS.find((item) => item.room_id === roomId);
       io.emit('MESSAGE_CREATED', room.messages)
     }
@@ -152,11 +157,7 @@ app.use('/api/inventory', routerInventory);
 app.use('/api/room', routerRoom);
 app.use('/api/online_user', routerOnlineUser);
 app.use('/api/connection', routerConnection);
-app.use(express.static('client/public/img'));
-
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'client/public/index.html'))
-})
+app.use(express.static('client/public'));
 
 async function start() {
   try {
@@ -167,7 +168,7 @@ async function start() {
       useCreateIndex: true
     })
 
-    httpServer.listen(process.env.PORT, () => {
+    httpServer.listen(PORT, () => {
       console.log(`server started on port ${PORT}`);
     })
   } catch (err) {
