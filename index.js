@@ -10,7 +10,7 @@ import config from './config/default.js';
 import { createServer } from "http";
 import { Server } from "socket.io";
 
-const PORT = process.env.PORT || 8080;
+const PORT = config.port;
 
 const ROOMS = [
   {
@@ -167,7 +167,7 @@ async function start() {
       useCreateIndex: true
     })
 
-    httpServer.listen(PORT, () => {
+    httpServer.listen(process.env.PORT, () => {
       console.log(`server started on port ${PORT}`);
     })
   } catch (err) {
