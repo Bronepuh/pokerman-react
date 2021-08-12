@@ -157,7 +157,16 @@ app.use('/api/inventory', routerInventory);
 app.use('/api/room', routerRoom);
 app.use('/api/online_user', routerOnlineUser);
 app.use('/api/connection', routerConnection);
-app.use(express.static('client/public'));
+// app.use(express.static('client/public'));
+
+app.use(favicon(__dirname + '/build/favicon.png')); 
+
+app.use(express.static(__dirname));
+app.use(express.static(path.join(__dirname, 'build')));
+
+app.get('/*', function (req, res) {
+  res.sendFile(path.join(__dirname, 'build', 'index.html'));
+  });
 
 async function start() {
   try {
