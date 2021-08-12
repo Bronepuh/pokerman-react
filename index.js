@@ -178,7 +178,7 @@ async function start() {
       useCreateIndex: true
     })
 
-    httpServer.listen(process.env.PORT || 3000, () => {
+    httpServer.listen(process.env.PORT || 4000, () => {
       console.log(`server started on port ${PORT}`);
     })
   } catch (err) {
