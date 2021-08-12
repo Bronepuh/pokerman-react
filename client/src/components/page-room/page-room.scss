@@ -1,0 +1,16 @@
+.page-room {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: min-content 1fr;
+  width: 100%;
+  height: 100%;
+  align-items: flex-start;
+  align-content: flex-start;
+}
+
+.page-room__inner {
+  position: relative;
+  display: flex;
+  width: 100%;
+  height: 100%;
+}
