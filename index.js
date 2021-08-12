@@ -10,7 +10,7 @@ import config from './config/default.js';
 import { createServer } from "http";
 import { Server } from "socket.io";
 
-const PORT = config.port;
+const PORT = process.env.PORT || 8080;
 
 const ROOMS = [
   {
@@ -154,9 +154,9 @@ app.use('/api/online_user', routerOnlineUser);
 app.use('/api/connection', routerConnection);
 app.use(express.static('client/public/img'));
 
-// app.get('*', (req, res) => {
-//   res.sendFile(path.join(__dirname, 'public/index.html'))
-// })
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public/index.html'))
+})
 
 async function start() {
   try {
