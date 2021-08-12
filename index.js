@@ -160,7 +160,7 @@ app.use('/api/online_user', routerOnlineUser);
 app.use('/api/connection', routerConnection);
 // app.use(express.static('client/public'));
 
-app.use(favicon(__dirname + 'client/build/favicon.png')); 
+// app.use(favicon(__dirname + 'client/build/favicon.png')); 
 
 app.use(express.static(__dirname));
 app.use(express.static(path.join(__dirname, 'client/build')));
