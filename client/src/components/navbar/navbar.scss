@@ -57,8 +57,16 @@ monospace;
   height: auto;
   margin-left: auto;
 
+  @media(max-width:500px) {
+    width: 20%;
+  }
+
   &--enter {
     margin-left: 100px;
+
+    @media(max-width:500px) {
+      margin-left: 50px;
+    }
   }
 }
 
@@ -72,6 +80,10 @@ a {
   font-size: 18px;
   transition: all 0.8s $curve;
   color: #ffffff;
+
+  @media(max-width:500px) {
+    font-size: 12px;
+  }
 
   .text {
     padding-left: 15px;
@@ -92,7 +104,6 @@ a {
   transform: translateX(-50%);
   width: 100%;
   top: -100%;
-
 }
 
 .glitch-btn:hover {
@@ -588,7 +599,7 @@ a {
   height: 60px;
 
   &:hover {
-    .cabinet-btn-body{
+    .cabinet-btn-body {
       transform: scale(1.2);
       transition: 0.3s ease;
       box-shadow: 0px 15px 25px -5px #5f492b71;
@@ -596,7 +607,7 @@ a {
   }
 
   &:active {
-    .cabinet-btn-body{
+    .cabinet-btn-body {
       transform: scale(1.1);
       transition: 0.3s ease;
       box-shadow: 0px 4px 8px #7a593b62;
@@ -606,14 +617,14 @@ a {
 
 .cabinet-btn-body {
   position: relative;
-	margin: 0;
-	background: transparent;
+  margin: 0;
+  background: transparent;
   width: 62px;
   height: 62px;
   border-radius: 50%;
-	display: flex;
-	justify-content: center;
-	align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   cursor: pointer;
 
   img {
@@ -627,14 +638,14 @@ a {
 }
 
 a.cabinet-btn {
-	background-color: rgb(97, 94, 85);
-	border: 5px solid rgb(255, 166, 0);
-	outline: 0;
-	padding: 1.3rem 1.3rem;
-	font-size: 4rem;
-	font-family: monospace;
-	box-shadow: 0px 5px 10px #5f4d3788;
-	transition: all 0.3s;
-	cursor: pointer;
+  background-color: rgb(97, 94, 85);
+  border: 5px solid rgb(255, 166, 0);
+  outline: 0;
+  padding: 1.3rem 1.3rem;
+  font-size: 4rem;
+  font-family: monospace;
+  box-shadow: 0px 5px 10px #5f4d3788;
+  transition: all 0.3s;
+  cursor: pointer;
   border-radius: 50%;
 }

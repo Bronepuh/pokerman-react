@@ -104,6 +104,14 @@ body {
   }
 }
 
+.form__content {
+  h1 {
+    @media(max-width:500px) {
+      font-size: 24px;
+    }
+  }
+}
+
 body.on-start {
   .form {
     &__cover {

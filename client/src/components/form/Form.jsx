@@ -46,7 +46,6 @@ const Form = ({ pageName }) => {
     }
     dispatch(reg(form));
     resetForm();
-    history.push(AppRoute.SIGN_IN);
   }
 
   const handleLogin = () => {
@@ -101,7 +100,7 @@ const Form = ({ pageName }) => {
         </div>
 
         {pageName === 'reg' &&
-          <button type="button" className="styled-button" onClick={handleReg}>
+          <Link to={AppRoute.SIGN_IN} type="button" className="styled-button" onClick={handleReg}>
             <span className="styled-button__real-text-holder">
               <span className="styled-button__real-text">Зарегистрироваться</span>
               <span className="styled-button__moving-block face">
@@ -114,7 +113,7 @@ const Form = ({ pageName }) => {
                 </span>
               </span>
             </span>
-          </button>
+          </Link>
         }
 
         {pageName === 'auth' && authorizationStatus !== 'AUTH' &&
