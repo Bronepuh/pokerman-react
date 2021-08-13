@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const BACKEND_URL = '/check';
+const BACKEND_URL = '/';
 const REQUEST_TIMEOUT = 5000;
 
 const HttpCode = {
