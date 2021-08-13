@@ -166,7 +166,7 @@ app.use('/api/connection', routerConnection);
 app.use(express.static(path.join(__dirname, 'client/build')));
 
 app.get('/*', function (req, res) {
-  res.sendFile(path.join(__dirname, 'client/index.js'));
+  res.sendFile(path.join(__dirname, 'client/build/index.html'));
   });
 
 async function start() {
