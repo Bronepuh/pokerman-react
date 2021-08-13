@@ -9,7 +9,6 @@ const Chat = ({ user, roomId }) => {
     console.log(messageList);
   }
 
-
   const handleSubmit = (evt) => {
     evt.preventDefault();
 
@@ -17,7 +16,7 @@ const Chat = ({ user, roomId }) => {
       socket.emit('SEND_MESSAGE', {
         roomId: roomId,
         author: user.name,
-        msg: encode(evt.target[0].value)
+        msg: evt.target[0].value
       })
     }
   }

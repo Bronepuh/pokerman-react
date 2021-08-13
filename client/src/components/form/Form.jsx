@@ -5,11 +5,15 @@ import { getAuthorizationStatus } from '../../store/user/selectors';
 import { useSelector, useDispatch } from 'react-redux';
 import { login, reg } from '../../store/api-actions';
 import {encode} from '../../common'
+import { AppRoute } from '../../const';
+import { useHistory } from 'react-router';
+import { Link } from 'react-router-dom';
 
 
-const Form1 = ({ pageName }) => {
+const Form = ({ pageName }) => {
 
   const loginRef = useRef()
+  const history = useHistory()
 
   const [form, setForm] = useState({
     login: '',
@@ -40,9 +44,9 @@ const Form1 = ({ pageName }) => {
       loginRef.current.style = 'color: #880000';
       return console.log('нет логина!');
     }
-
     dispatch(reg(form));
     resetForm();
+    history.push(AppRoute.SIGN_IN);
   }
 
   const handleLogin = () => {
@@ -134,7 +138,6 @@ const Form1 = ({ pageName }) => {
     </form>
 
   );
-
 }
 
-export default Form1;
+export default Form;

@@ -33,11 +33,6 @@ const reg = ({ login, email, password }) => async (dispatch, _getState, api) => 
         'Content-Type': 'application/json'
       }
     })
-      .then((res) => {
-        console.log('все ок', res);
-        dispatch(redirectToRoute(AppRoute.SIGN_IN));
-        window.location.reload();
-      })
   } catch (err) {
     console.log(err);
   }
