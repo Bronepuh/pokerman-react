@@ -163,7 +163,7 @@ app.use('/api/connection', routerConnection);
 // app.use(favicon(__dirname + 'client/build/favicon.png')); 
 
 app.use(express.static(__dirname));
-app.use(express.static(path.join(__dirname, 'client/build')));
+app.use(express.static(path.join('D:/Project-Ninja/cmder/react/pokerman-react/client/build/index.html')));
 
 app.get('/*', function (req, res) {
   res.sendFile(path.join('D:/Project-Ninja/cmder/react/pokerman-react/client/build/index.html'));
