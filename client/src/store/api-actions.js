@@ -2,7 +2,7 @@ import { requireAuthorization, redirectToRoute, getUser } from './action';
 import { AppRoute, AuthorizationStatus } from '../const';
 
 const checkAuth = (data) => (dispatch, _getState, api) => (
-  api.post('api/auth/check')
+  api.post('auth/check')
     .then((res) => {
       if (!data) {
         dispatch(requireAuthorization('NO_AUTH'));
@@ -11,7 +11,7 @@ const checkAuth = (data) => (dispatch, _getState, api) => (
         const userId = fullData.userId
         // console.log(userId);
         dispatch(requireAuthorization(res.data));
-        api.get('api/user/item', { params: userId })
+        api.get('user/item', { params: userId })
           .then((res) => {
             const user = res.data;
             dispatch(getUser(user))
@@ -28,7 +28,7 @@ const reg = ({ login, email, password }) => async (dispatch, _getState, api) => 
   console.log('api', login, email, password);
   try {
     console.log('api', login, email, password);
-    await api.post('/api/auth/registration', { ...form }, {
+    await api.post('auth/registration', { ...form }, {
       headers: {
         'Content-Type': 'application/json'
       }
@@ -41,7 +41,7 @@ const reg = ({ login, email, password }) => async (dispatch, _getState, api) => 
 const login = ({ login, email, password }) => async (dispatch, _getState, api) => {
   const form = { login, email, password };
   try {
-    await api.post('api/auth/login', { ...form }, {
+    await api.post('auth/login', { ...form }, {
       headers: {
         'Content-Type': 'application/json'
       }
