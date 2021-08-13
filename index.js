@@ -16,7 +16,7 @@ import favicon from 'express-favicon';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-const PORT = 4000;
+const PORT = 8080;
 
 const ROOMS = [
   {
@@ -166,7 +166,7 @@ app.use(express.static(__dirname));
 app.use(express.static(path.join(__dirname, 'client/build')));
 
 app.get('/*', function (req, res) {
-  res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
+  res.sendFile(path.join('client/build/index.html'));
   });
 
 async function start() {
@@ -178,7 +178,7 @@ async function start() {
       useCreateIndex: true
     })
 
-    httpServer.listen(process.env.PORT || 4000, () => {
+    httpServer.listen(process.env.PORT || 8080, () => {
       console.log(`server started on port ${PORT}`);
     })
   } catch (err) {
