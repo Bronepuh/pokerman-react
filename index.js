@@ -163,10 +163,10 @@ app.use('/api/connection', routerConnection);
 // app.use(favicon(__dirname + 'client/build/favicon.png')); 
 
 app.use(express.static(__dirname));
-app.use(express.static(path.join(__dirname, 'client/build')));
+app.use(express.static(path.join(__dirname, '/client/build')));
 
 app.get('/*', function (req, res) {
-  res.sendFile(path.join(__dirname+'client/build/'+'index.html'));
+  res.sendFile(path.join(__dirname+'/client/build/'+'index.html'));
   });
 
 async function start() {
