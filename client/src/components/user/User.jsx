@@ -14,31 +14,13 @@ import { socket } from '../../socket';
 import { ROOMS } from '../../const';
 import { getRooms } from '../../store/room/selectors';
 import { setRooms } from '../../store/action';
+import Navbar from '../navbar/Navbar';
 
 const User = ({ user }) => {
   const roomId = ROOMS.USER_ROOM
   const [newInventory, setNewInventory] = useState([]);
   const dispatch = useDispatch();
-  // const history = useHistory();
   const id = user.id;
-
-  const rooms = useSelector(getRooms);
-  console.log('Комнаты из Стора: ', rooms);
-
-  const item = {
-    owner: id,
-    title: 'красные труселя',
-    description: 'Эти легендаоные труселя являются незаменимым талисманом удачливого игрока. Данный артефакт появляется в начале игры и очень сильно привязывается к своему хозяину. Берегите его и он отплатит Вам, принеся удачу (но это неточно)',
-    power: [{ luck: 3 }, { charm: 1 }],
-    img: 'img/underpants',
-    isActive: false,
-  }
-
-  const socketRelocation = useCallback(() => {
-    socket.emit('ROOM:RELOCATION', { user, roomId })    
-  }, [roomId, user]);
-
-
 
   //Sockets
   useEffect(() => {
@@ -57,7 +39,6 @@ const User = ({ user }) => {
   useEffect(() => {
     if (user.id) {
       socket.on('SEND_NEW_ROOMS', (rooms) => {
-        console.log('пришло новое состояние комнат', rooms);
         dispatch(setRooms(rooms))
       });
     }
@@ -71,9 +52,6 @@ const User = ({ user }) => {
     }
   }, [user.id])
   //End Sockets
-
-
-
 
   const getInventory = useCallback(async () => {
     try {
@@ -91,32 +69,14 @@ const User = ({ user }) => {
     getInventory();
   }, [getInventory]);
 
-
-  const createUnderpants = async () => {
-    try {
-      await axios.post('/api/inventory/add', { item, id })
-        .then(() => {
-          getInventory();
-        })
-    } catch (error) {
-      console.log(error);
-    }
-  }
-
   if (user) {
     return (
       <div className="page-user">
-        <div className="navbar">
-          <div className="navbar__user-name">{user.name}</div>
-          <Link to={AppRoute.MAIN} className="user__logo" onClick={socketRelocation} >Pokerman</Link>
-        </div>
-        <h2 className="page-reg__title">Личный кабинет</h2>
+        <Navbar user={user} roomId={roomId} />
         <div className="page-user__inventory inventory">
           <InventoryList inventory={newInventory} />
           <InventoryPromo user={user} getInventory={getInventory} />
         </div>
-        <button type="button" className="page-user__get-underpants" onClick={createUnderpants}>Создать трусы</button>
-        <button type="button" className="page-user__get-underpants" onClick={getInventory}>Получить трусы</button>
       </div>
     );
   } else {

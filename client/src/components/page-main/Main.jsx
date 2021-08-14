@@ -28,7 +28,6 @@ const Main = ({ user }) => {
   const authorizationStatus = useSelector(getAuthorizationStatus);
   const roomId = ROOMS.MAIN_ROOM;
   const rooms = useSelector(getRooms);
-  console.log('Комнаты из Стора: ', rooms);
   const onlineUsersLength = getAllOnlineUsers(rooms);
 
   const dispatch = useDispatch();
@@ -39,7 +38,9 @@ const Main = ({ user }) => {
 
   const createRoom = async () => {
     try {
-      axios.post('api/room/add-room', { name: 'ROOM_2' })
+      axios.post('api/room/add-room', { name: 'STORE' }).then((res) => {
+        console.log(res);
+      })
     } catch (error) {
       console.log(error);
     }

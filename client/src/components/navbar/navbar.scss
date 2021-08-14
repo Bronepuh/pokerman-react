@@ -597,6 +597,7 @@ a {
   flex-wrap: wrap;
   width: 60px;
   height: 60px;
+  margin-right: 10px;
 
   &:hover {
     .cabinet-btn-body {
@@ -639,7 +640,7 @@ a {
 
 a.cabinet-btn {
   background-color: rgb(97, 94, 85);
-  border: 5px solid rgb(255, 166, 0);
+  border: 5px solid rgb(255, 137, 3);
   outline: 0;
   padding: 1.3rem 1.3rem;
   font-size: 4rem;
@@ -648,4 +649,8 @@ a.cabinet-btn {
   transition: all 0.3s;
   cursor: pointer;
   border-radius: 50%;
+}
+
+a.cabinet-btn--store {
+  background-color: rgb(255, 245, 155);
 }

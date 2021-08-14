@@ -36,7 +36,7 @@ const Chat = ({ user, roomId }) => {
     if (user.id) {
       socket.emit('GET_MESSAGES', roomId)
     }
-  }, [user, roomId])
+  }, [user.id, roomId])
 
   socket.on('MESSAGE_CREATED', (messages) => {
     setMessageList(messages);

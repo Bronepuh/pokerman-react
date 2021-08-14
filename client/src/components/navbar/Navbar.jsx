@@ -151,6 +151,14 @@ const Navbar = ({ user, roomId, isMainPage }) => {
         </div>
       </div>
 
+      <div className="avatar avatar--store">
+        <div className="cabinet-btn-body">
+          <Link to={AppRoute.STORE} className="cabinet-btn cabinet-btn--store" onClick={socketRelocation}>
+            <img className="cabinet-btn-avatar" src="img/store-avatar.png" alt="аватар" />
+          </Link>
+        </div>
+      </div>
+
       <div className="glitch-btn-container">
         <Link to={'#'} className="glitch-btn" onClick={handleLogout}>
           <div className="text">ВЫЙТИ<span className="hidden">&nbsp;</span></div>

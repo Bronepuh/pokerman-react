@@ -40,6 +40,11 @@ const ROOMS = [
     online_users: [],
   },
   {
+    name: 'STORE_ROOM',
+    room_id: '6117a719dfd13508c4f026be',
+    online_users: [],
+  },
+  {
     name: 'ROOM_1',
     room_id: '6111912325947259b089bdd3',
     online_users: [],
@@ -144,7 +149,7 @@ io.on("connection", (socket) => {
     }
   })
 
-  socket.once('CLEAR_MSG', (roomId) => {
+  socket.on('CLEAR_MSG', (roomId) => {
     const room = ROOMS.find((item) => item.room_id === roomId);
     room.messages = [];
   })

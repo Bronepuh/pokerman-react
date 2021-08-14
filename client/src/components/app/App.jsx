@@ -15,6 +15,7 @@ import { socket } from '../../socket';
 import { useSelector, useDispatch } from 'react-redux';
 import { ROOMS } from '../../const';
 import browserHistory from '../../browser-history';
+import Store from '../store/Store';
 // import axios from 'axios';
 
 socket.on("connect", () => {
@@ -60,6 +61,9 @@ function App() {
         </Route>
         <Route exact path={AppRoute.PROFILE}>
           <User user={user} />
+        </Route>
+        <Route exact path={AppRoute.STORE}>
+          <Store user={user} roomId={ROOMS.STORE}/>
         </Route>
         <Route exact path={AppRoute.ROOM_1}>
           <Room user={user} roomId={ROOMS.ROOM_1} />

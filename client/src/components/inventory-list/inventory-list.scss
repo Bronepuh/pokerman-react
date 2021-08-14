@@ -4,9 +4,22 @@
   align-content: flex-start;
   flex-wrap: wrap;
   flex-grow: 1;
-  min-height: 300px;
+  height: 100%;
   margin: 0;
   padding: 0;
   background-color: rgba(122, 61, 22, 0.884);
   border: 10px solid rgb(32, 16, 3);
+  border-right: none;
+}
+
+.inventory__list--store {
+  border-right: 10px solid rgb(32, 16, 3);
+
+  @media (max-width: 620px) {
+    width: 100%;
+  }
+
+  .inventory__item--active {
+    display: none;
+  }
 }

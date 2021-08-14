@@ -10,6 +10,11 @@
   color: #fff;
   font-size: 20px;
   font-weight: bold;
+
+  @media (max-width: 768px) {
+    width: 280px;
+    margin: 0 auto;
+  }
 }
 
 .inventory__promo-settings {
@@ -17,11 +22,24 @@
   display: flex;
   flex-wrap: wrap;
   align-items: flex-start;
+  align-content: flex-start;
   width: 100%;
-  height: 200px;
+  height: 150px;
   padding-bottom: 30px;
-  overflow: hidden;
+  overflow: scroll;
+  overflow-x: hidden;
   border-bottom: 2px dashed black;
+}
+
+.inventory__promo-settings::-webkit-scrollbar {
+  width: 5px;
+  background-color: rgba(122, 122, 122, 0.15);
+  border-radius: 5px;
+}
+
+.inventory__promo-settings::-webkit-scrollbar-thumb {
+  background: #747474;
+  border-radius: 5px;
 }
 
 .inventory__promo-title {
@@ -56,14 +74,6 @@
 
 .inventory__promo-power {
   color: green;
-}
-
-.inventory__promo-equipment {
-  position: relative;
-  display: flex;
-  flex-wrap: wrap;
-  width: 100%;
-  height: 500px;
 }
 
 .inventory__layer {

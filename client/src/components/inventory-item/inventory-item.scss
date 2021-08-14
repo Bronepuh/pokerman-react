@@ -4,9 +4,8 @@
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  width: 100px;
-  height: 100px;
-  height: 100px;
+  width: 80px;
+  height: 80px;
   margin: 5px;
   overflow: hidden;
   background-color: rgb(245, 214, 191);
@@ -15,6 +14,11 @@
 
   &:focus {
     outline: 5px solid yellow;
+  }
+
+  @media(max-width:500px) {
+    width: 70px;
+    height: 70px;
   }
 }
 
@@ -27,9 +31,13 @@
 }
 
 .inventory__item-picture {
-  width: 70px;
+  width: 60px;
   height: auto;
   object-fit: 90%;
+
+  @media(max-width:500px) {
+    width: 50px;
+  }
 }
 
 .inventory__item-title {
@@ -47,7 +55,7 @@
 
 .inventory__item--active {
   position: absolute;
-  top: 550px;
+  top: 457px;
   right: 357px;
   width: 65px;
   height: 65px;
@@ -56,6 +64,11 @@
   z-index: 1;
   border: none;
 
+  @media(max-width:768px) {
+    top: 458px;
+    right: 193px;
+  }
+
   .inventory__item-picture {
     width: 45px;
   }
@@ -63,10 +76,14 @@
   .inventory__item-cloth {
     display: flex;
     position: absolute;
-    top: 0px;
-    left: 101px;
-    width: 117px;
-    height: 117px;
+    top: 3px;
+    left: 98px;
+    width: 113px;
+    height: 113px;
     z-index: 1;
+
+    @media(max-width:768px) {
+      left: 70px;
+    }
   }
 }
