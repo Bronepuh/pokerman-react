@@ -6,14 +6,12 @@ import { useSelector, useDispatch } from 'react-redux';
 import { login, reg } from '../../store/api-actions';
 import {encode} from '../../common'
 import { AppRoute } from '../../const';
-import { useHistory } from 'react-router';
 import { Link } from 'react-router-dom';
 
 
 const Form = ({ pageName }) => {
 
-  const loginRef = useRef()
-  const history = useHistory()
+  const loginRef = useRef();
 
   const [form, setForm] = useState({
     login: '',

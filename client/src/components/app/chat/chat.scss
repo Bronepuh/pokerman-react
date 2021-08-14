@@ -41,9 +41,21 @@
   margin: 0;
   padding: 5px;
   list-style: none;
-  overflow: scroll;
+  // overflow: scroll;
   overflow-x: hidden;
   z-index: 0;
+}
+
+.chat__list::-webkit-scrollbar {
+  width: 5px;
+  background-color: rgba(122, 122, 122, 0.15);
+  border-radius: 5px;
+  height: 200px;
+}
+
+.chat__list::-webkit-scrollbar-thumb {
+  background: #747474;
+  border-radius: 5px;
 }
 
 .chat__item {
@@ -79,7 +91,9 @@
   flex-wrap: wrap;
   width: 100%;
   margin: 0;
-  padding: 0;
+  padding: 3px;
+  font-size: 14px;
+
 }
 
 .chat__form {

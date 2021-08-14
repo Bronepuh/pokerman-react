@@ -15,7 +15,6 @@ import Chat from '../app/chat/Chat';
 const Room = ({ user, roomId }) => {
 
   const rooms = useSelector(getRooms);
-  console.log('Комнаты из Стора: ', rooms);
 
   let room = null;
 
@@ -42,7 +41,6 @@ const Room = ({ user, roomId }) => {
   useEffect(() => {
     if (user.id) {
       socket.on('SEND_NEW_ROOMS', (rooms) => {
-        console.log('пришло новое состояние комнат', rooms);
         dispatch(setRooms(rooms))
       });
     }

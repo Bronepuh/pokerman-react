@@ -1,16 +1,26 @@
 import React, { useEffect, useState } from 'react';
 import './chat.scss';
 import { socket } from '../../../socket';
-import { encode } from '../../../common';
 
 const Chat = ({ user, roomId }) => {
   const [messageList, setMessageList] = useState({});
-  if(messageList[0]) {
-    console.log(messageList);
+
+  const scrollChat = () => {
+    const testList = document.querySelector('.chat__list');
+    testList.scrollTop = testList.scrollHeight;
   }
+
+  useEffect(() => {
+    if (messageList.length) {
+      scrollChat();
+    }
+  }, [messageList.length])
+
+
 
   const handleSubmit = (evt) => {
     evt.preventDefault();
+    const textInput = document.querySelector('.chat__textarea');
 
     if (user.id) {
       socket.emit('SEND_MESSAGE', {
@@ -19,6 +29,7 @@ const Chat = ({ user, roomId }) => {
         msg: evt.target[0].value
       })
     }
+    textInput.value = '';
   }
 
   useEffect(() => {
@@ -28,14 +39,15 @@ const Chat = ({ user, roomId }) => {
   }, [user, roomId])
 
   socket.on('MESSAGE_CREATED', (messages) => {
-    setMessageList(messages)
+    setMessageList(messages);
   })
 
 
   const clearMessages = () => {
     socket.emit('CLEAR_MSG', roomId);
-    setMessageList([]);
+
     socket.emit('GET_MESSAGES', roomId);
+    setMessageList([]);
   }
 
   return (
@@ -53,13 +65,17 @@ const Chat = ({ user, roomId }) => {
                   </div>
                 </li>)
             })}
+
         </ul>
       </div>
       <form className="chat__form" onSubmit={handleSubmit}>
         <textarea className="chat__textarea" type="text" />
         <button className="chat__btn" type="submit">ok</button>
       </form>
-      <button className="chat__message" onClick={clearMessages}>clear messages</button>
+      {user.name === 'Bronepuh' &&
+        <button className="chat__message" onClick={clearMessages}>clear messages</button>
+      }
+
     </section>
   );
 }

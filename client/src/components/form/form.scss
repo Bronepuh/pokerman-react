@@ -115,8 +115,6 @@ body {
 body.on-start {
   .form {
     &__cover {
-      &:after {}
-
       &:before {
         transform: scale(0.15);
       }
@@ -210,9 +208,7 @@ h1 {
     top: 0;
     height: 100%;
     width: 100%;
-    overflow: hidden;
-
-    &.face {}
+    overflow: hidden;    
 
     &.back {
       color: white;
@@ -339,7 +335,7 @@ h1 {
       width: 100%;
       height: 1px;
     }
-    
+
     .styled-input__placeholder-text {
       position: absolute;
       top: 15px;
@@ -481,11 +477,10 @@ h1 {
 }
 
 input:-webkit-autofill,
-input:-webkit-autofill:hover, 
-input:-webkit-autofill:focus, 
-input:-webkit-autofill:active
-{
- -webkit-box-shadow: 0 0 0 30px #d67526fd inset !important;
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 30px #d67526fd inset !important;
 }
 
 input:-webkit-autofill {

@@ -39,9 +39,7 @@ const Main = ({ user }) => {
 
   const createRoom = async () => {
     try {
-      axios.post('api/room/add-room', { name: 'ROOM_2' }).then((req, res) => {
-        console.log(res);
-      })
+      axios.post('api/room/add-room', { name: 'ROOM_2' })
     } catch (error) {
       console.log(error);
     }
@@ -63,7 +61,6 @@ const Main = ({ user }) => {
   useEffect(() => {
     if (user.id) {
       socket.on('SEND_NEW_ROOMS', (rooms) => {
-        console.log('пришло новое состояние комнат', rooms);
         dispatch(setRooms(rooms))
       });
     }

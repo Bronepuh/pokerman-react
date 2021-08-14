@@ -8,7 +8,6 @@ const initialState = {
 const room = createReducer(initialState, (builder) => {
   builder
     .addCase(setRooms, (state, action) => {
-      console.log('ACTION', action.payload);
       state.rooms = action.payload;
     })
     .addCase(setOnlineUsers, (state, action) => {
